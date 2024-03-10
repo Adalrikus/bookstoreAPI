@@ -1,2 +1,2 @@
 # bookstoreAPI
-Book store API with CRUD and MySQL
+Book store API with CRUD and SQLite3
