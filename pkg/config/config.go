@@ -3,6 +3,7 @@ package config
 import (
 	"context"
 	"database/sql"
+	"log"
 
 	"github.com/adalrikus/bookstoreAPI/pkg/models"
 	_ "github.com/mattn/go-sqlite3"
@@ -25,7 +26,7 @@ func Connect(ctx context.Context) (*models.Queries, error) {
 
 	// create tables
 	if _, err := db.ExecContext(ctx, string(schema)); err != nil {
-		return nil, err
+		log.Println("[WARN]", err)
 	}
 
 	queries := models.New(db)

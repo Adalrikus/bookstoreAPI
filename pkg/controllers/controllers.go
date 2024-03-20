@@ -13,6 +13,17 @@ import (
 
 var queries *models.Queries
 
+func GetQueries(r *http.Request) *models.Queries {
+  var err error
+  if queries == nil {
+    queries, err = config.Connect(r.Context())
+    if err != nil {
+      log.Fatal(err)
+    }
+  }
+  return queries
+}
+
 func Vars(r *http.Request) map[string]string {
 	if rv := r.Context().Value(0); rv != nil {
 		return rv.(map[string]string)
@@ -33,15 +44,11 @@ func LogError(w http.ResponseWriter, r *http.Request, err error) {
 }
 
 func CreateBook(w http.ResponseWriter, r *http.Request) {
-	queries, err := config.Connect(r.Context())
-  if err != nil {
-    LogError(w, r, err)
-  }
+  queries = GetQueries(r)
 	newBook := models.CreateBookParams{}
 	if err := utils.ParseBody(r, &newBook); err != nil {
 		LogError(w, r, err)
 	}
-  log.Println(newBook)
 	book, err := queries.CreateBook(r.Context(), newBook)
 	if err != nil {
 		LogError(w, r, err)
@@ -54,10 +61,7 @@ func CreateBook(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetBooks(w http.ResponseWriter, r *http.Request) {
-	queries, err := config.Connect(r.Context())
-  if err != nil {
-    LogError(w, r, err)
-  }
+  queries = GetQueries(r)
 	newBooks, err := queries.GetBooks(r.Context())
 	if err != nil {
 		LogError(w, r, err)
@@ -70,10 +74,7 @@ func GetBooks(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetBook(w http.ResponseWriter, r *http.Request) {
-	queries, err := config.Connect(r.Context())
-  if err != nil {
-    LogError(w, r, err)
-  }
+  queries = GetQueries(r)
 	vars := Vars(r)
 	bookId := vars["bookId"]
 	id, err := strconv.ParseInt(bookId, 0, 0)
@@ -92,10 +93,7 @@ func GetBook(w http.ResponseWriter, r *http.Request) {
 }
 
 func UpdateBook(w http.ResponseWriter, r *http.Request) {
-	queries, err := config.Connect(r.Context())
-  if err != nil {
-    LogError(w, r, err)
-  }
+  queries = GetQueries(r)
 	newBook := models.UpdateBookParams{}
 	if err := utils.ParseBody(r, &newBook); err != nil {
 		LogError(w, r, err)
@@ -111,10 +109,7 @@ func UpdateBook(w http.ResponseWriter, r *http.Request) {
 }
 
 func DeleteBook(w http.ResponseWriter, r *http.Request) {
-	queries, err := config.Connect(r.Context())
-  if err != nil {
-    LogError(w, r, err)
-  }
+  queries = GetQueries(r)
 	vars := Vars(r)
 	bookId := vars["bookId"]
 	id, err := strconv.ParseInt(bookId, 0, 0)
