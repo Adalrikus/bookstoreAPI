@@ -1,14 +1,15 @@
 package routes
 
 import (
-  "github.com/adalrikus/bookstoreAPI/pkg/controllers"
-  "github.com/gorilla/mux"
+	"net/http"
+
+	"github.com/adalrikus/bookstoreAPI/pkg/controllers"
 )
 
-func RegisterBookStoreRoutes(router *mux.Router) {
-  router.HandleFunc("/book/", controllers.CreateBook).Methods("POST")
-  router.HandleFunc("/book/", controllers.GetBook).Methods("GET")
-  router.HandleFunc("/book/{bookId}", controllers.GetBookById).Methods("GET")
-  router.HandleFunc("/book/{bookId}", controllers.UpdateBook).Methods("PUT")
-  router.HandleFunc("/book/{bookId}", controllers.DeleteBook).Methods("DELETE")
+func RegisterBookStoreRoutes(router *http.ServeMux) {
+	router.HandleFunc("POST /book/", controllers.CreateBook)
+	router.HandleFunc("GET /book/", controllers.GetBooks)
+	router.HandleFunc("GET /book/{bookId}", controllers.GetBook)
+	router.HandleFunc("PUT /book/{bookId}", controllers.UpdateBook)
+	router.HandleFunc("DELETE /book/{bookId}", controllers.DeleteBook)
 }

@@ -5,12 +5,12 @@ import (
 	"net/http"
 
 	"github.com/adalrikus/bookstoreAPI/pkg/routes"
-	"github.com/gorilla/mux"
 )
 
 func main() {
-	router := mux.NewRouter()
+	router := http.NewServeMux()
 	routes.RegisterBookStoreRoutes(router)
 	http.Handle("/", router)
+  log.Println("Starting server on port 8080")
 	log.Fatal(http.ListenAndServe(":8080", router))
 }
