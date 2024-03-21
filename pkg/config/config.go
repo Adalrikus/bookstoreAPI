@@ -24,6 +24,7 @@ func Connect(ctx context.Context) (*models.Queries, error) {
 		return nil, err
 	}
 
+	log.Println("[INFO] Connected to database")
 	// create tables
 	if _, err := db.ExecContext(ctx, string(schema)); err != nil {
 		log.Println("[WARN]", err)
