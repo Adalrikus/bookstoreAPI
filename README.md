@@ -2,8 +2,8 @@
 Book store API with CRUD and SQLite3
 
 ## Prerequisites
-* (Golang)[https://go.dev/]
-* (curl)[https://curl.se/docs/manpage.html]
+* [Golang](https://go.dev/)
+* [curl](https://curl.se/docs/manpage.html)
 
 ## How to build
 Run following commands to build app:
