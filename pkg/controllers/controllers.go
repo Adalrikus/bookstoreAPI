@@ -6,9 +6,9 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/adalrikus/bookstoreAPI/pkg/config"
-	"github.com/adalrikus/bookstoreAPI/pkg/models"
-	utils "github.com/adalrikus/bookstoreAPI/pkg/utils"
+	"github.com/Adalrikus/bookstoreAPI/pkg/config"
+	"github.com/Adalrikus/bookstoreAPI/pkg/models"
+	utils "github.com/Adalrikus/bookstoreAPI/pkg/utils"
 )
 
 var queries *models.Queries

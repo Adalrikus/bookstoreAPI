@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/adalrikus/bookstoreAPI/pkg/routes"
+	"github.com/Adalrikus/bookstoreAPI/pkg/routes"
 )
 
 func main() {

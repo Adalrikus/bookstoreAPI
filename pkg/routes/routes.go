@@ -3,7 +3,7 @@ package routes
 import (
 	"net/http"
 
-	"github.com/adalrikus/bookstoreAPI/pkg/controllers"
+	"github.com/Adalrikus/bookstoreAPI/pkg/controllers"
 )
 
 func RegisterBookStoreRoutes(router *http.ServeMux) {

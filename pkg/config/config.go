@@ -5,7 +5,7 @@ import (
 	"database/sql"
 	"log"
 
-	"github.com/adalrikus/bookstoreAPI/pkg/models"
+	"github.com/Adalrikus/bookstoreAPI/pkg/models"
 	_ "github.com/mattn/go-sqlite3"
 )
 
