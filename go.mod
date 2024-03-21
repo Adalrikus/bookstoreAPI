@@ -1,4 +1,4 @@
-module github.com/adalrikus/bookstoreAPI
+module github.com/Adalrikus/bookstoreAPI
 
 go 1.22.1
 
