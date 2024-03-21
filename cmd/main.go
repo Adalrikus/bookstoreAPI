@@ -12,5 +12,5 @@ func main() {
 	routes.RegisterBookStoreRoutes(router)
 	http.Handle("/", router)
 	log.Println("[INFO] Starting server on port 8080")
-  log.Fatal("[ERROR] ", http.ListenAndServe(":8080", router))
+	log.Fatal("[ERROR] ", http.ListenAndServe(":8080", router))
 }
