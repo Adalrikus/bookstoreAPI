@@ -1,8 +1,8 @@
 package main
 
 import (
+	"context"
 	"log"
-  "context"
 	"net/http"
 
 	"github.com/Adalrikus/bookstoreAPI/pkg/config"
@@ -10,10 +10,10 @@ import (
 )
 
 func main() {
-  queries, err := config.Connect(context.Background())
-  if err != nil {
-    log.Fatal("[ERROR] ", err)
-  }
+	queries, err := config.Connect(context.Background())
+	if err != nil {
+		log.Fatal("[ERROR] ", err)
+	}
 	router := http.NewServeMux()
 	routes.RegisterBookStoreRoutes(router, queries)
 	http.Handle("/", router)
